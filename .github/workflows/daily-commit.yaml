@@ -2,8 +2,8 @@ name: Daily Commit Scheduler
 
 on:
   schedule:
-    - cron: "30 8 * * *"  # daily at 08:30 UTC (~2 PM IST)
-
+    - cron: '15 4 * * *'
+  workflow_dispatch:
 jobs:
   daily_commit_22f3001778_ds_study_iitm_ac_in:
     runs-on: ubuntu-latest
