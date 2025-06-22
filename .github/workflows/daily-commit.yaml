@@ -1,0 +1,25 @@
+name: Daily Commit Scheduler
+
+on:
+  schedule:
+    - cron: "30 8 * * *"  # daily at 08:30 UTC (~2 PM IST)
+
+jobs:
+  daily_commit_22f3001778_ds_study_iitm_ac_in:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Make a dummy commit
+        run: |
+          date > last_run.txt
+          git add last_run.txt
+          git commit -m "Automated daily commit at $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git push
